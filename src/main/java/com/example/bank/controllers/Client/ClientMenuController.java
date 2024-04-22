@@ -1,5 +1,6 @@
 package com.example.bank.controllers.Client;
 
+import com.example.bank.Models.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
@@ -15,5 +16,25 @@ public class ClientMenuController implements Initializable {
     public Button report_btn;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {}
+    public void initialize(URL location, ResourceBundle resources) {
+        addListeners();
+    }
+
+    private void addListeners() {
+        dashboard_btn.setOnAction(event -> onDashboard());
+        transaction_btn.setOnAction(event -> onTransactions());
+        accounts_btn.setOnAction(event -> onAccounts());
+    }
+
+    private void onDashboard() {
+        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set("Dashboard");
+    }
+
+    private void onTransactions() {
+        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set("Transactions");
+    }
+
+    private void onAccounts() {
+        Model.getInstance().getViewFactory().getClientSelectedMenuItem().set("Accounts");
+    }
 }
