@@ -34,7 +34,13 @@ public class LoginController implements Initializable {
         Stage stage = (Stage) error_lbl.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
         if (Model.getInstance().getViewFactory().getLoginAccountType() == AccountType.CLIENT) {
-            Model.getInstance().getViewFactory().showClientWindow();
+            //Evaluate login Credentials
+            Model.getInstance().evaluateClientCred(payee_address_fld.getText(), password_fld.getText());
+            if (Model.getInstance().getClientLoginSuccessFlag()) {
+                Model.getInstance().getViewFactory().showClientWindow();
+                //Close the login stage
+            }
+
         } else {
             Model.getInstance().getViewFactory().showAdminWindow();
         }

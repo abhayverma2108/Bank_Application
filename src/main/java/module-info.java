@@ -13,6 +13,7 @@ module com.example.bank {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.desktop;
 
     opens com.example.bank to javafx.fxml;
     exports com.example.bank;
